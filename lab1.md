@@ -11,7 +11,7 @@ where zzz is replaced with the three letters corresponding to your account. Afte
 password that accompanies your cse15l account to connect to the remote server. If you succesfully connect your terminal window
 should look similar to the below screenshot.
 
-![Image](https://github.com/EdtheEgghead/cse15l-lab-reports/blob/main/Screenshot%202023-01-12%20at%204.38.31%20PM.png)
+![Image](https://github.com/EdtheEgghead/cse15l-lab-reports/Screenshot%202023-01-12%20at%204.38.31%20PM.png)
 
 If you want to exit your remote server you can use "Control + D" or type "exit".
 
