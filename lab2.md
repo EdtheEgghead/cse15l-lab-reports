@@ -62,8 +62,55 @@ class StringServer {
  2. Upon the new path being entered: `add-message?s=I just wanted to tell you that us students appreciate you and value you and your work!` `handleRequest` checks if the request begins with `/add-message`. If it has the desired path, it then splits the query into two arguments to validate if the first is equal to "s". If it does equal "s" then the `handleRequest` method checks if count is greater than zero. It makes this check to ensure that the first line on our webpage is formatted correctly because otherwise an additional `\n` adds an extra line before the text. If count is greater than zero then it adds the message after the equals sign and a new line to message in the server.
  3. If the URL's path equaled `/` then the current contents of string would be shown. If it did not equal either `/` or `/add-message` it returns "404 not found"
  4. After checking these conditions and adding the first parameter from `parameters` to `string`, count is incremented and the contents of `string` are displayed on the local server and our page now looks like the above screenshot.
----
-## Part 2
 
+## Part 2
+For this section of the Lab I will be looking at `ArrayExamples.java` and more specifically the `static void reverseInPlace(int[] arr)` method. This method fails to do as intended with the input of `input1 = { 3, 2 ,1 }` when this input is tested it results in failure as shown by the below JUnit test.
+```
+@Test
+public void testReverseInPlace2() {
+    int[] input1 = { 3, 2 ,1 };
+    ArrayExamples.reverseInPlace(input1);
+    assertArrayEquals(new int[]{ 1, 2, 3 }, input1);
+}
+```
+When this test is run instead of rearranging the array to `{ 1, 2, 3 }` it rearranges it into `{ 1, 2, 1 }`
+
+An input it suceeds with and its corresponding JUnit test.
+```
+@Test 
+public void testReverseInPlace() {
+    int[] input1 = { 3 };
+    ArrayExamples.reverseInPlace(input1);
+    assertArrayEquals(new int[]{ 3 }, input1);
+}
+```
+When this test is run it passes because only one element is present so no elements can be overwritten.
+
+The symptoms of these issues.
+![Image](https://edtheegghead.github.io/cse15l-lab-reports/Screenshot%202023-01-30%20at%203.04.48%20PM.png)
+
+Before
+```
+static void reverseInPlace(int[] arr) {
+    for(int i = 0; i < arr.length; i += 1) {
+        arr[i] = arr[arr.length - i - 1];
+    }
+}
+```
+After
+```
+static void reverseInPlace(int[] arr) {
+    int[] temp = new int[arr.length];
+    for(int i = 0; i < arr.length; i++){
+        temp[i] = arr[i];
+    }
+
+    for(int i = 0; i < arr.length; i += 1) {
+        arr[i] = temp[arr.length - i - 1];
+    }
+}
+```
+![Image](https://edtheegghead.github.io/cse15l-lab-reports/Screenshot%202023-01-30%20at%203.07.20%20PM.png)
+The issue with the orignal code is that the values at the beggining of the array are lost when copying from back to front because there is no temporary array to store the original data values. To fix this you create a temporary array then copy the contents of `arr` into it then you can copy the values from the temporary array to the new array backwards to complete the reversal in place.
 ## Part 3
   There are several things that I learned during week two and week three of lab. During week two, I learned how to launch a server on a remote server. Although I had previously run a server on my own computer during my own free time, I did not know that it was almost the same process to launch a server on a remote machine. In week three, I learned that a `.jar` file is just a bunch of classes zipped together. Though a small thing to learn, it brought continuity to an assignment in cse11 that had us using a provided `.jar` file to run several classes.
