@@ -89,7 +89,7 @@ When this test is run it passes because only one element is present so no elemen
 The symptoms of these issues.
 ![Image](https://edtheegghead.github.io/cse15l-lab-reports/Screenshot%202023-01-30%20at%203.04.48%20PM.png)
 
-Before
+Before changes
 ```
 static void reverseInPlace(int[] arr) {
     for(int i = 0; i < arr.length; i += 1) {
@@ -97,7 +97,7 @@ static void reverseInPlace(int[] arr) {
     }
 }
 ```
-After
+After changes
 ```
 static void reverseInPlace(int[] arr) {
     int[] temp = new int[arr.length];
