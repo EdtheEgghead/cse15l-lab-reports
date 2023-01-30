@@ -21,6 +21,6 @@ After you connect to the remote server you can practice navigating about the fil
 2. `mkdir` - Typing `mkdir <directory name` makes a new directory called said name. When you then type `ls` you see that you've created a new directory.
 4. `touch` - Typing `touch <file name>` allows you to create a file with a specific name.
 5. `mv` - Typing `mv <file name> <destination directory>` moves a file from the current directory to the destination directory. Thus `hello.txt` is moved from the current directory to the practice directory. Also note that the `.` before `/practice` signals the current directory your reside in.
-6. Finally by changing directories using the `cd <directory name>` into the practice directory and listing its contents using `ls` we see that hello.txt has been moved to a different directory.
+6. Finally by changing directories using the `cd <directory name>` into the practice directory and listing its contents using `ls` we see that `hello.txt` has been moved to a different directory.
 
 ![Image](https://edtheegghead.github.io/cse15l-lab-reports/Screenshot%202023-01-12%20at%205.47.25%20PM.png)
