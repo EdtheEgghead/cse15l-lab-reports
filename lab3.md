@@ -142,5 +142,6 @@
   Another niche use case of -l is to find the number of files and directories that are present in a directory by using grep with `''` as its argument as    seen in the above snipppet. Note that this number includes the directories in the `written_2` directory not only `*.txt` files.
 ---
 ## Sources used:
-1. Built in manuals- For generic describtion of different options that are available
-2. ChatGPt- For help developing examples and command debugging
+1. Built in manuals- For generic describtion of different options that are available.
+2. ChatGPt- For help developing examples and command debugging.
+3. https://en.wikibooks.org/wiki/Grep - Used to double check above two sources.
