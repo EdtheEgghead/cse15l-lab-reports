@@ -45,7 +45,8 @@
   ./written_2/travel_guides/berlitz2/Athens-WhatToDo.txt
   ```
   Another use of `-i` is in finding where the name of a proper noun appears. Although in this case it     does not apply because all instances of `Athens` are uppercase, it would be useful in the case that     the writer of the text file did not capitalize properly
----
+***
+
 * `-c`
 
   This command-line option, or the equivalent `--count` option, counts the number of times the given string appears in a file.
@@ -68,7 +69,8 @@
   ./Bahamas-WhereToGo.txt:16
   ```
   Using `-c` in conjunction with `-r` allows the ability to find the count of a string in numerous       files, for example here we recursively search through every file with Bahamas*.txt and count the       number of the string `people` in each one.
----
+***
+
 * `-r`
 
   This command-line option is also equivalent to `-R` or `--recursive` and allows you to recursively search through a directory for a desired sub-string.
@@ -117,7 +119,8 @@
   ```
   This example shows how much faster using the `-r` option is as opposed to checking each individual     file in the directory for `Bahamas`, the `-r` option allows the process to be automated and outputs
   the desired files.
----
+***
+
 * `-l`
 
   This command-line option makes it so that grep outputs the file path of files that have the desired sub-string.
@@ -139,8 +142,9 @@
   edgarseecof@Edgars-MacBook-Pro written_2 % wc -l temp-grep.txt         
      226 temp-grep.txt
   ```
-  Another niche use case of -l is to find the number of files and directories that are present in a directory by using grep with `''` as its argument as    seen in the above snipppet. Note that this number includes the directories in the `written_2` directory not only `*.txt` files.
----
+  Another niche use case of '-l' is to find the number of files and directories that are present in a directory by using grep with `''` as its argument as   seen in the above snipppet. Note that this number includes the directories in the `written_2` directory not only `*.txt` files.
+***
+
 ## Sources used:
 1. Built in manuals- For generic describtion of different options that are available.
 2. ChatGPt- For help developing examples and command debugging.
