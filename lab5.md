@@ -5,7 +5,7 @@
 
 * `-f` 
 
-  This command-line option makes it such that `mv does not prompt for confirmation before overwriting the destination path. 
+  This command-line option makes it such that `mv` does not prompt for confirmation before overwriting the destination path. 
   ## Example 1
   ```
   edgarseecof@Edgars-MacBook-Pro skill-demo1-data % ls
@@ -31,7 +31,7 @@
 
   edgarseecof@Edgars-MacBook-Pro skill-demo1-data % 
   ```
-  Here the a new and empty file is created is then is used to overwrite the original `temp.txt`, with the -f option, no warning messeges are printed and the process is just executed and eliminates the contents of the old file.
+  Here the a new and empty file is created is then is used to overwrite the original `temp.txt`, with the `-f` option, no warning messeges are printed and the process is just executed and eliminates the contents of the old file.
   
   ## Example 2
   ```
@@ -88,7 +88,6 @@
   edgarseecof@Edgars-MacBook-Pro skill-demo1-data % echo "$(cat temp.txt)"      
 
   edgarseecof@Edgars-MacBook-Pro skill-demo1-data % 
-
   ```
   The option `-n` option is especially useful if you are testing code and throwing around standard file names that may have useful output in them, thus preventing you from making a mistake. As seen here, the `-n` option doesn't change the contents of an existing file.
   ## Example 2
@@ -107,31 +106,31 @@
   written_2//non-fiction/OUP/Abernathy/ch6.txt
   ...
   ```
-  Likewise, -n can be useful because it safeguards against overwriting useful data but still permits the copying of text from one file to another if the given comman would not have overwritten information.
+  Likewise, `-n` can be useful because it safeguards against overwriting useful data but still permits the copying of text from one file to another if the given comman would not have overwritten information.
 ***
 
 * `-i`
 
-  This command-line option makes it so that grep outputs the file path of files that have the desired sub-string.
+  This command-line option makes it so that the command line asks for permission to overwrite a file.
   ## Example 1
   ```
-  edgarseecof@Edgars-MacBook-Pro skill-demo1-data % grep -r -l Lucayans
-  ./written_2/travel_guides/berlitz2/Bahamas-History.txt
+  edgarseecof@Edgars-MacBook-Pro skill-demo1-data % touch file.txt
+  edgarseecof@Edgars-MacBook-Pro skill-demo1-data % mv -i file.txt temp.txt 
+  overwrite temp.txt? (y/n [n]) y
+  edgarseecof@Edgars-MacBook-Pro skill-demo1-data % ls
+  temp.txt	written_2
   ```
-  ```
-  edgarseecof@Edgars-MacBook-Pro skill-demo1-data % grep -r Lucayans   
-  ./written_2/travel_guides/berlitz2/Bahamas-History.txt:Centuries before the arrival of Columbus, a ...    
-  ./written_2/travel_guides/berlitz2/Bahamas-History.txt:The Spaniards never bothered to settle in ...  
-  ```
-  In this example you can see the use of `-l` becasue it shows you where the substring you are looking   for is with a path and does not fill up your terminal with the text containing the substring. Also     it shows how `-l` makes grep only search a file until one match has been found.
+  In this example you can see the use of `-i` becasue it tells you if you are about to make a mistake and asks for further confirmation to perform a risky action.
   
   ## Example 2
   ```
-  edgarseecof@Edgars-MacBook-Pro written_2 % grep -rl '' > temp-grep.txt
-  edgarseecof@Edgars-MacBook-Pro written_2 % wc -l temp-grep.txt         
-     226 temp-grep.txt
+  edgarseecof@Edgars-MacBook-Pro skill-demo1-data % ls
+  file.txt	temp.txt	written_2
+  edgarseecof@Edgars-MacBook-Pro skill-demo1-data % mv -i -n file.txt temp.txt 
+  edgarseecof@Edgars-MacBook-Pro skill-demo1-data % ls
+  file.txt	temp.txt	written_2
   ```
-  Another niche use case of '-l' is to find the number of files and directories that are present in a directory by using grep with `''` as its argument as   seen in the above snipppet. Note that this number includes the directories in the `written_2` directory not only `*.txt` files.
+  Another niche behavior of `-i` is that `-n` negates its effects, meaning that it does not ask for confirmation or even have the ability to overwrite files in its presence.
 ***
 
 ## Sources used:
