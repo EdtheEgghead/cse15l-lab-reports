@@ -136,4 +136,4 @@
 ## Sources used:
 1. Built in manuals- For generic describtion of different options that are available.
 2. ChatGPt- For help developing examples and command debugging.
-3. https://en.wikibooks.org/wiki/Grep - Used to double check above two sources.
+3. https://en.wikibooks.org/wiki/Grep - Used to double check other two sources.
