@@ -1,127 +1,116 @@
-# Lab Report \#3
+# Lab Report \#5
   For this lab I will be looking at the `mv` command in Bash.
 
 ## `mv` command-line options
 
-* `-i` 
+* `-f` 
 
-  This command-line option, or the equivalent `--ignore-case` option ignores case. For example, `example` is treated the same as `Example` when grepping.
+  This command-line option makes it such that `mv does not prompt for confirmation before overwriting the destination path. 
   ## Example 1
   ```
-  edgarseecof@Edgars-MacBook-Pro berlitz2 % grep -c 'people' Athens-Intro.txt
-  3
+  edgarseecof@Edgars-MacBook-Pro skill-demo1-data % ls
+  grep-temp.txt	temp-find.txt	temp-grep.txt	temp.txt	written_2
+  edgarseecof@Edgars-MacBook-Pro skill-demo1-data % echo "$(cat temp.txt)"
+  written_2/
+  written_2//non-fiction
+  written_2//non-fiction/OUP
+  written_2//non-fiction/OUP/Berk
+  written_2//non-fiction/OUP/Berk/ch2.txt
+  written_2//non-fiction/OUP/Berk/ch1.txt
+  written_2//non-fiction/OUP/Berk/CH4.txt
+  written_2//non-fiction/OUP/Berk/ch7.txt
+  written_2//non-fiction/OUP/Abernathy
+  ...
   ```
   ```
-  edgarseecof@Edgars-MacBook-Pro berlitz2 % grep -c -i 'people' Athens-Intro.txt
-  5
+  edgarseecof@Edgars-MacBook-Pro skill-demo1-data % touch temp1.txt
+  edgarseecof@Edgars-MacBook-Pro skill-demo1-data % mv -f temp1.txt temp.txt 
+  edgarseecof@Edgars-MacBook-Pro skill-demo1-data % ls
+  grep-temp.txt	temp-find.txt	temp-grep.txt	temp.txt	written_2
+  edgarseecof@Edgars-MacBook-Pro skill-demo1-data % echo "$(cat temp.txt)"  
+
+  edgarseecof@Edgars-MacBook-Pro skill-demo1-data % 
   ```
-  Suppose you wanted to find count how many times the string `people` was used in `Athens-Intro.txt`     with `-c` the useful option `-i` gives you an accurate   count as it ignores case as seen between       command one and command two above.
+  Here the a new and empty file is created is then is used to overwrite the original `temp.txt`, with the -f option, no warning messeges are printed and the process is just executed and eliminates the contents of the old file.
+  
   ## Example 2
   ```
-  edgarseecof@Edgars-MacBook-Pro skill-demo1-data % grep -r -l athens
+  edgarseecof@Edgars-MacBook-Pro skill-demo1-data % touch file.txt
+  edgarseecof@Edgars-MacBook-Pro skill-demo1-data % ls
+  file.txt	grep-temp.txt	temp.txt	written_2
+  edgarseecof@Edgars-MacBook-Pro skill-demo1-data % mv -i file.txt temp.txt 
+  overwrite temp.txt? (y/n [n]) y
+  edgarseecof@Edgars-MacBook-Pro skill-demo1-data % ls
+  grep-temp.txt	temp.txt	written_2
+  edgarseecof@Edgars-MacBook-Pro skill-demo1-data % touch file.txt         
+  edgarseecof@Edgars-MacBook-Pro skill-demo1-data % mv -i -f file.txt temp.txt
+  edgarseecof@Edgars-MacBook-Pro skill-demo1-data % ls
+  grep-temp.txt	temp.txt	written_2 
   ```
-  ```
-  edgarseecof@Edgars-MacBook-Pro skill-demo1-data % grep -r -l -i athens
-  ./written_2/non-fiction/OUP/Rybczynski/ch3.txt
-  ./written_2/travel_guides/berlitz1/HistoryItaly.txt
-  ./written_2/travel_guides/berlitz1/WhereToGreek.txt
-  ./written_2/travel_guides/berlitz1/HistoryIstanbul.txt
-  ./written_2/travel_guides/berlitz1/WhereToItaly.txt
-  ./written_2/travel_guides/berlitz1/HistoryGreek.txt
-  ./written_2/travel_guides/berlitz1/WhereToEdinburgh.txt
-  ./written_2/travel_guides/berlitz1/WhereToIsrael.txt
-  ./written_2/travel_guides/berlitz1/IntroGreek.txt
-  ./written_2/travel_guides/berlitz1/WhatToGreek.txt
-  ./written_2/travel_guides/berlitz1/HistoryEdinburgh.txt
-  ./written_2/travel_guides/berlitz2/Berlin-WhereToGo.txt
-  ./written_2/travel_guides/berlitz2/Barcelona-History.txt
-  ./written_2/travel_guides/berlitz2/Boston-WhereToGo.txt
-  ./written_2/travel_guides/berlitz2/Berlin-History.txt
-  ./written_2/travel_guides/berlitz2/Crete-WhereToGo.txt
-  ./written_2/travel_guides/berlitz2/Athens-History.txt
-  ./written_2/travel_guides/berlitz2/Canada-WhereToGo.txt
-  ./written_2/travel_guides/berlitz2/Athens-WhereToGo.txt
-  ./written_2/travel_guides/berlitz2/Athens-Intro.txt
-  ./written_2/travel_guides/berlitz2/Athens-WhatToDo.txt
-  ```
-  Another use of `-i` is in finding where the name of a proper noun appears. Although in this case it     does not apply because all instances of `Athens` are uppercase, it would be useful in the case that     the writer of the text file did not capitalize properly
+  Another use of `-f` is to override other `mv` options such as `-i` and `-n` to force your `mv` operation to be executed as seen above in which the first time it asks for confirmation but `-f` overrides that action.
 ***
 
-* `-c`
+* `-v`
 
-  This command-line option, or the equivalent `--count` option, counts the number of times the given string appears in a file.
+  This command-line option means verbose and shows where the file is moved to after it is moved
   ## Example 1
   ```
-  edgarseecof@Edgars-MacBook-Pro berlitz2 % grep -c 'people' Athens-Intro.txt
-  3
+  edgarseecof@Edgars-MacBook-Pro skill-demo1-data % mv -v temp.txt ~/Documents/ucsd/cse15l
+  temp.txt -> /Users/edgarseecof/Documents/ucsd/cse15l/temp.txt
   ```
-  Here you can see `-c` being used to count the number of times the string `people` appears in a file.
+  Here you can see `-v` being used to show you where the file was moved to
   ## Example 2
   ```
-  edgarseecof@Edgars-MacBook-Pro berlitz2 % pwd  
-  /Users/edgarseecof/repos/skill-demo1-data/written_2/travel_guides/berlitz2
+  edgarseecof@Edgars-MacBook-Pro skill-demo1-data % mv -v ~/Documents/ucsd/cse15l/temp.txt .
+  /Users/edgarseecof/Documents/ucsd/cse15l/temp.txt -> ./temp.txt
   ```
-  ```
-  edgarseecof@Edgars-MacBook-Pro berlitz2 % grep -r -c people ./Bahamas*.txt
-  ./Bahamas-History.txt:2
-  ./Bahamas-Intro.txt:1
-  ./Bahamas-WhatToDo.txt:1
-  ./Bahamas-WhereToGo.txt:16
-  ```
-  Using `-c` in conjunction with `-r` allows the ability to find the count of a string in numerous       files, for example here we recursively search through every file with Bahamas*.txt and count the       number of the string `people` in each one.
+  Similarly, `-v` can be used when moving a file from a different directory into your current directory
 ***
 
-* `-r`
+* `-n`
 
-  This command-line option is also equivalent to `-R` or `--recursive` and allows you to recursively search through a directory for a desired sub-string.
+  This command-line option forces `mv` to not overwrite an existing file
   ## Example 1
   ```
-  edgarseecof@Edgars-MacBook-Pro skill-demo1-data % grep -rl Puerto
-  ./written_2/non-fiction/OUP/Castro/chR.txt
-  ./written_2/travel_guides/berlitz1/HistoryJamaica.txt
-  ./written_2/travel_guides/berlitz1/WhatToFWI.txt
-  ./written_2/travel_guides/berlitz1/HistoryHawaii.txt
-  ./written_2/travel_guides/berlitz1/WhereToMallorca.txt
-  ./written_2/travel_guides/berlitz2/Costa-WhereToGo.txt
-  ./written_2/travel_guides/berlitz2/Cuba-WhatToDo.txt
-  ./written_2/travel_guides/berlitz2/Cancun-WhatToDo.txt
-  ./written_2/travel_guides/berlitz2/Vallarta-History.txt
-  ./written_2/travel_guides/berlitz2/Cancun-History.txt
-  ./written_2/travel_guides/berlitz2/PuertoRico-WhatToDo.txt
-  ./written_2/travel_guides/berlitz2/Vallarta-WhatToDo.txt
-  ./written_2/travel_guides/berlitz2/CstaBlanca-WhereToGo.txt
-  ./written_2/travel_guides/berlitz2/PuertoRico-History.txt
-  ./written_2/travel_guides/berlitz2/PuertoRico-WhereToGo.txt
-  ./written_2/travel_guides/berlitz2/Cuba-WhereToGo.txt
-  ./written_2/travel_guides/berlitz2/Costa-WhatToDo.txt
-  ./written_2/travel_guides/berlitz2/CanaryIslands-WhereToGo.txt
-  ./written_2/travel_guides/berlitz2/CanaryIslands-WhatToDo.txt
-  ./written_2/travel_guides/berlitz2/Vallarta-WhereToGo.txt
-  ./written_2/travel_guides/berlitz2/Cancun-WhereToGo.txt
+  edgarseecof@Edgars-MacBook-Pro skill-demo1-data % ls
+  grep-temp.txt	temp.txt	written_2
+  edgarseecof@Edgars-MacBook-Pro skill-demo1-data % echo "$(cat grep-temp.txt)"                                                             
+  written_2//non-fiction/OUP/Berk/ch2.txt
+  written_2//non-fiction/OUP/Berk/ch1.txt
+  written_2//non-fiction/OUP/Berk/CH4.txt
+  written_2//non-fiction/OUP/Berk/ch7.txt
+  written_2//non-fiction/OUP/Abernathy/ch2.txt
+  written_2//non-fiction/OUP/Abernathy/ch3.txt
+  ...
+  edgarseecof@Edgars-MacBook-Pro skill-demo1-data % echo "$(cat temp.txt)" 
+
+  edgarseecof@Edgars-MacBook-Pro skill-demo1-data % mv -n grep-temp.txt temp.txt
+  edgarseecof@Edgars-MacBook-Pro skill-demo1-data % echo "$(cat temp.txt)"      
+
+  edgarseecof@Edgars-MacBook-Pro skill-demo1-data % 
+
   ```
-  The option `-r` is especially useful because it allows you to search through all directories and       subdirectories present, as opposed to individual files.
+  The option `-n` option is especially useful if you are testing code and throwing around standard file names that may have useful output in them, thus preventing you from making a mistake. As seen here, the `-n` option doesn't change the contents of an existing file.
   ## Example 2
   ```
-  edgarseecof@Edgars-MacBook-Pro berlitz2 % ls                                 
-  Algarve-History.txt		Berlin-WhatToDo.txt		CostaBlanca-History.txt
-  ...                   ...                   ...
+  edgarseecof@Edgars-MacBook-Pro skill-demo1-data % man mv
+  edgarseecof@Edgars-MacBook-Pro skill-demo1-data % mv -n grep-temp.txt file.txt
+  edgarseecof@Edgars-MacBook-Pro skill-demo1-data % echo "$(cat file.txt)"      
+  written_2//non-fiction/OUP/Berk/ch2.txt
+  written_2//non-fiction/OUP/Berk/ch1.txt
+  written_2//non-fiction/OUP/Berk/CH4.txt
+  written_2//non-fiction/OUP/Berk/ch7.txt
+  written_2//non-fiction/OUP/Abernathy/ch2.txt
+  written_2//non-fiction/OUP/Abernathy/ch3.txt
+  written_2//non-fiction/OUP/Abernathy/ch1.txt
+  written_2//non-fiction/OUP/Abernathy/ch7.txt
+  written_2//non-fiction/OUP/Abernathy/ch6.txt
+  ...
   ```
-  ```
-  edgarseecof@Edgars-MacBook-Pro berlitz2 % grep -rl Bahamas                   
-  ./Bahamas-WhereToGo.txt
-  ./Canada-WhereToGo.txt
-  ./Bahamas-Intro.txt
-  ./Bahamas-WhatToDo.txt
-  ./Bahamas-History.txt
-  ```
-  ```
-  edgarseecof@Edgars-MacBook-Pro berlitz2 % grep -l Bahamas Algarve-History.txt
-  ```
-  This example shows how much faster using the `-r` option is as opposed to checking each individual     file in the directory for `Bahamas`, the `-r` option allows the process to be automated and outputs
-  the desired files.
+  Likewise, -n can be useful because it safeguards against overwriting useful data but still permits the copying of text from one file to another if the given comman would not have overwritten information.
 ***
 
-* `-l`
+* `-i`
 
   This command-line option makes it so that grep outputs the file path of files that have the desired sub-string.
   ## Example 1
